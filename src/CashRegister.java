@@ -45,7 +45,7 @@ public class CashRegister implements ActionListener {
         createAddArea();
 
         frame.getContentPane().setBackground(Color.BLACK);
-        frame.setSize(1000,800); 
+        frame.setSize(1000,700); 
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -58,29 +58,29 @@ public class CashRegister implements ActionListener {
 
     private void createAddArea(){
         inputProductName = new JTextArea();
-        inputProductName.setBounds(20,650,300,30);
+        inputProductName.setBounds(20,570,300,30);
         inputProductName.setFont(new Font("Arial Black", Font.BOLD, 18));
         frame.add(inputProductName);
 
         JLabel label = new JLabel("Antal");
-        label.setBounds(340,625,300,30);
+        label.setBounds(340,545,300,30);
         label.setForeground(Color.WHITE);
         frame.add(label);
 
         inputCount = new JTextArea();
-        inputCount.setBounds(330,650,50,30);
+        inputCount.setBounds(330,570,50,30);
         inputCount.setFont(new Font("Arial Black", Font.BOLD, 18));
         frame.add(inputCount);
 
 
         addToReceiptButton = new JButton("Add");
-        addToReceiptButton.setBounds(400,640,70,50);
+        addToReceiptButton.setBounds(400,560,70,50);
         addToReceiptButton.setFont(new Font("Arial Black", Font.PLAIN, 14));
         frame.add(addToReceiptButton);
 
 
         payButton = new JButton("Pay");
-        payButton.setBounds(480,640,70,50);
+        payButton.setBounds(480,560,70,50);
         payButton.setFont(new Font("Arial Black", Font.PLAIN, 14));
         frame.add(payButton);
 
@@ -115,7 +115,7 @@ public class CashRegister implements ActionListener {
 
 
 
-        panel.setBounds(0, 0, 600, 600);
+        panel.setBounds(0, 0, 600, 550);
 
         frame.add(panel);
     }
@@ -131,7 +131,7 @@ public class CashRegister implements ActionListener {
         JScrollPane scroll = new JScrollPane (receipt);
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        scroll.setBounds(600, 0, 400, 1000);
+        scroll.setBounds(600, 0, 400, 700);
 
         frame.add(scroll);    
     }
