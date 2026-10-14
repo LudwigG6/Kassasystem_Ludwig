@@ -1,13 +1,26 @@
 public class Produkt {
     private String name;
     private double price;
-    private int count;
+    private double moms;
+    
 
-    public Produkt(String name, double price, int count) {
+    public Produkt(String name, double price, double moms) {
         this.name = name;
         this.price = price;
-        this.count = count;
+        this.moms = moms;
     }
+    public String getName() {
+        return name;
+    }
+    public double  getPrice() {
+        return price;
+    }
+    public double getMoms() {
+        return moms;
+    }
+    
+    
+
 
     
 }
