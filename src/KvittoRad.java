@@ -16,6 +16,15 @@ public class KvittoRad {
     public double getTotalPris(){
         return produkt.getPrice() * antal;
     }
+    public double getBrutto(){
+        return getTotalPris();
+    }
+    public double getMomsBelopp(){
+        return getBrutto() * produkt.getMoms() / (100 + produkt.getMoms());
+    }
+    public double getNetto(){
+        return getBrutto() - getMomsBelopp();
+    }
     
     
 }
