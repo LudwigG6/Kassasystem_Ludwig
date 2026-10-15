@@ -211,7 +211,10 @@ public class CashRegister implements ActionListener {
 
             try{
                 int antal = Integer.parseInt(antalText);
-                if
+                if ( antal <= 0){
+                    System.out.println("Skriv ett heltal större än 0");
+                    return;
+                }
                 KvittoRad rad = new KvittoRad(valdProdukt, antal);
                 kvitto.laggTillRad(rad);
                 uppdateraKvitto();
@@ -222,6 +225,8 @@ public class CashRegister implements ActionListener {
                 System.out.println("Skriv ett heltal");
             }
             
+        } else if (e.getSource() == payButton){
+            System.out.println("Pay fungerar");
         }
     }
 
