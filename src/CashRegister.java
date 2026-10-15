@@ -137,16 +137,7 @@ public class CashRegister implements ActionListener {
     }
 
     public void run(){
-        receipt.append("                     STEFANS SUPERSHOP\n");
-        receipt.append("----------------------------------------------------\n");
-        receipt.append("\n");
-        receipt.append("Kvittonummer: 122        Datum: 2024-09-01 13:00:21\n");
-        receipt.append("----------------------------------------------------\n");
-        receipt.append("Kaffe Gevalia           5 *     51.00    =   255.00  \n");
-        receipt.append("Nallebjörn              1 *     110.00   =   110.00  \n");
-        receipt.append("Total                                        ------\n");
-        receipt.append("                                             306.00\n");
-        receipt.append("TACK FÖR DITT KÖP\n");
+        
 
     }            
 
