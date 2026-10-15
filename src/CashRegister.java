@@ -227,6 +227,9 @@ public class CashRegister implements ActionListener {
             
         } else if (e.getSource() == payButton){
             System.out.println("Pay fungerar");
+            receipt.append("\n--------------------------------------------------\n");
+            receipt.append("TACK FÖR DITT KÖP!          Sluttotal: " + kvitto.getTotalPris() + "\n");
+            receipt.append("--------------------------------------------------\n");
         }
     }
 
