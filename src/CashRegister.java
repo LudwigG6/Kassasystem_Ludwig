@@ -2,11 +2,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.FontFormatException;
-import java.awt.TextArea;
-import java.io.IOException;
-import java.io.InputStream;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -248,10 +243,18 @@ public class CashRegister implements ActionListener {
             receipt.append("\n--------------------------------------------------\n");
             receipt.append("TACK FÖR DITT KÖP!          Sluttotal: " + kvitto.getTotalPris() + "\n");
             receipt.append("--------------------------------------------------\n");
-            kvitto = new Kvitto();
-            valdProdukt = null;
-            inputProductName.setText("");
-            inputCount.setText("");
+            Timer timer = new Timer(3000, event -> {
+                kvitto = new Kvitto();
+                valdProdukt = null;
+                inputProductName.setText("");
+                inputCount.setText("");
+
+                uppdateraKvitto();
+            });
+
+            timer.setRepeats(false);
+            timer.start();
+            
         }
     }
 
