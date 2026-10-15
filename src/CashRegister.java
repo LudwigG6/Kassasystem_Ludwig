@@ -81,12 +81,14 @@ public class CashRegister implements ActionListener {
 
 
         addToReceiptButton = new JButton("Add");
+        addToReceiptButton.addActionListener(this);
         addToReceiptButton.setBounds(400,560,70,50);
         addToReceiptButton.setFont(new Font("Arial Black", Font.PLAIN, 14));
         frame.add(addToReceiptButton);
 
 
         payButton = new JButton("Pay");
+        payButton.addActionListener(this);
         payButton.setBounds(480,560,70,50);
         payButton.setFont(new Font("Arial Black", Font.PLAIN, 14));
         frame.add(payButton);
@@ -177,6 +179,9 @@ public class CashRegister implements ActionListener {
             inputProductName.setText(vaniljYoghurt.getName());
         } else if (e.getSource() == daimButton) {
             inputProductName.setText(daim.getName());
+        } else if (e.getSource() == addToReceiptButton) {
+            String antalText = inputCount.getText();
+            
         }
     }
 
