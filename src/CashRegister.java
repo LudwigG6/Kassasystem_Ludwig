@@ -66,6 +66,7 @@ public class CashRegister implements ActionListener {
 
     private void createAddArea(){
         inputProductName = new JTextArea();
+        inputProductName.setEditable(false);
         inputProductName.setBounds(20,570,300,30);
         inputProductName.setFont(new Font("Arial Black", Font.BOLD, 18));
         frame.add(inputProductName);
@@ -160,11 +161,26 @@ public class CashRegister implements ActionListener {
         chips = new Produkt("Chips", 20.0, 12.0);
         vaniljYoghurt = new Produkt("Vanilj Yoghurt", 15.0, 12.0);
         daim = new Produkt("Daim", 10.0, 12.0);
+        uppdateraKvitto();
 
         
         
 
-    }            
+    }  
+    private void uppdateraKvitto(){
+        receipt.setText("");
+
+        receipt.append("                  Ludwig Kassasystem\n");
+        receipt.append("--------------------------------------------------\n");
+        receipt.append("Kvitto nummer: " + kvitto.getKvittoNumemr() + "\n");
+        receipt.append("--------------------------------------------------\n"); 
+        for(KvittoRad rad : kvitto.getKvittoRader()){
+            receipt.append ( rad.getProdukt().getName() + " " + rad.getAntal() + " x   " + rad.getTotalPris() + "\n");
+        }
+
+        receipt.append("--------------------------------------------------\n");
+        receipt.append("Total: " + kvitto.getTotalPris() + "\n"); 
+    }          
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -187,14 +203,18 @@ public class CashRegister implements ActionListener {
             valdProdukt = daim;
             inputProductName.setText(daim.getName());
         } else if (e.getSource() == addToReceiptButton) {
+            if (valdProdukt == null){
+                System.out.println("Välj en produkt först");
+                return;
+            }
             String antalText = inputCount.getText();
 
             try{
                 int antal = Integer.parseInt(antalText);
+                if
                 KvittoRad rad = new KvittoRad(valdProdukt, antal);
                 kvitto.laggTillRad(rad);
-                receipt.append("Total: " + kvitto.getTotalPris() + "\n");
-                receipt.append(rad.getProdukt().getName() + " " + rad.getProdukt().getPrice() + " x " + rad.getAntal() + " = " + rad.getTotalPris() + "\n");
+                uppdateraKvitto();
                 kvitto.getTotalPris();
                 System.out.println(antal);
 
