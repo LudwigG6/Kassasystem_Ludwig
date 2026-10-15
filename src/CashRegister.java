@@ -35,6 +35,7 @@ public class CashRegister implements ActionListener {
     JButton addToReceiptButton;
     JButton payButton;
     Kvitto kvitto;
+    Produkt valdProdukt;
     Produkt kaffe;
     Produkt nalle;
     Produkt mugg;
@@ -168,22 +169,33 @@ public class CashRegister implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == kaffeButton) {
+            valdProdukt = kaffe;
             inputProductName.setText(kaffe.getName());
         } else if (e.getSource() == nalleButton) {
+            valdProdukt = nalle;
             inputProductName.setText(nalle.getName());
         } else if (e.getSource() == muggButton) {
+            valdProdukt = mugg;
             inputProductName.setText(mugg.getName());
         } else if (e.getSource() == chipsButton) {
+            valdProdukt = chips;
             inputProductName.setText(chips.getName());
         } else if (e.getSource() == vaniljYoghurtButton) {
+            valdProdukt = vaniljYoghurt;
             inputProductName.setText(vaniljYoghurt.getName());
         } else if (e.getSource() == daimButton) {
+            valdProdukt = daim;
             inputProductName.setText(daim.getName());
         } else if (e.getSource() == addToReceiptButton) {
             String antalText = inputCount.getText();
 
             try{
                 int antal = Integer.parseInt(antalText);
+                KvittoRad rad = new KvittoRad(valdProdukt, antal);
+                kvitto.laggTillRad(rad);
+                receipt.append("Total: " + kvitto.getTotalPris() + "\n");
+                receipt.append(rad.getProdukt().getName() + " " + rad.getProdukt().getPrice() + " x " + rad.getAntal() + " = " + rad.getTotalPris() + "\n");
+                kvitto.getTotalPris();
                 System.out.println(antal);
 
             } catch (NumberFormatException error){
