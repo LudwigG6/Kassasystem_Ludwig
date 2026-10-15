@@ -15,7 +15,7 @@ public class Kvitto {
     public void laggTillRad(KvittoRad rad){
         kvittoRader.add(rad);
     }
-    public int getKvittoNumemr(){
+    public int getKvittoNummer(){
         return kvittoNummer;
     }
 

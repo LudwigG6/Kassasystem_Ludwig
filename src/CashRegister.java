@@ -148,7 +148,7 @@ public class CashRegister implements ActionListener {
         JScrollPane scroll = new JScrollPane (receipt);
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        scroll.setBounds(600, 0, 400, 700);
+        scroll.setBounds(600, 0, 500, 700);
 
         frame.add(scroll);    
     }
@@ -172,14 +172,32 @@ public class CashRegister implements ActionListener {
 
         receipt.append("                  Ludwig Kassasystem\n");
         receipt.append("--------------------------------------------------\n");
-        receipt.append("Kvitto nummer: " + kvitto.getKvittoNumemr() + "\n");
+        receipt.append("Kvitto nummer: " + kvitto.getKvittoNummer() + "\n");
         receipt.append("--------------------------------------------------\n"); 
+        double totalMoms = 0;
+        double totalNetto = 0;
+        double totalBrutto = 0;
+        double momsProcent = 0;
         for(KvittoRad rad : kvitto.getKvittoRader()){
-            receipt.append ( rad.getProdukt().getName() + " " + rad.getAntal() + " x   " + rad.getTotalPris() + "\n");
+            receipt.append ( rad.getProdukt().getName() + " " + rad.getAntal() + " x " + rad.getTotalPris() + "\n");
+            totalMoms += rad.getMomsBelopp();
+            totalNetto += rad.getNetto();
+            totalBrutto += rad.getBrutto();
+            momsProcent = rad.getProdukt().getMoms();
         }
 
         receipt.append("--------------------------------------------------\n");
-        receipt.append("Total: " + kvitto.getTotalPris() + "\n"); 
+        receipt.append("Total: " + kvitto.getTotalPris() + "\n");
+        receipt.append(String.format("Moms: %.2f    Netto: %.2f    Brutto: %.2f%n",
+            totalMoms,
+            totalNetto,
+            totalBrutto
+        ));
+
+        receipt.append(String.format("Moms%%: %.2f%%%n",
+            momsProcent
+        ));
+       
     }          
 
     @Override
