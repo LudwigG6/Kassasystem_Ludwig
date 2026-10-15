@@ -36,6 +36,11 @@ public class CashRegister implements ActionListener {
     JButton payButton;
     Kvitto kvitto;
     Produkt kaffe;
+    Produkt nalle;
+    Produkt mugg;
+    Produkt chips;
+    Produkt vaniljYoghurt;
+    Produkt daim;
 
 
     public CashRegister(){
@@ -147,6 +152,12 @@ public class CashRegister implements ActionListener {
     public void run(){
         kvitto = new Kvitto();
         kaffe = new Produkt("Kaffe", 25.0, 12.0);
+        nalle = new Produkt("Nalle", 50.0, 12.0);
+        mugg = new Produkt("Mugg", 30.0, 12.0);
+        chips = new Produkt("Chips", 20.0, 12.0);
+        vaniljYoghurt = new Produkt("Vanilj Yoghurt", 15.0, 12.0);
+        daim = new Produkt("Daim", 10.0, 12.0);
+
         
         
 
@@ -156,6 +167,16 @@ public class CashRegister implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == kaffeButton) {
             inputProductName.setText(kaffe.getName());
+        } else if (e.getSource() == nalleButton) {
+            inputProductName.setText(nalle.getName());
+        } else if (e.getSource() == muggButton) {
+            inputProductName.setText(mugg.getName());
+        } else if (e.getSource() == chipsButton) {
+            inputProductName.setText(chips.getName());
+        } else if (e.getSource() == vaniljYoghurtButton) {
+            inputProductName.setText(vaniljYoghurt.getName());
+        } else if (e.getSource() == daimButton) {
+            inputProductName.setText(daim.getName());
         }
     }
 
