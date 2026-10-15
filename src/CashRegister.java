@@ -34,6 +34,8 @@ public class CashRegister implements ActionListener {
     JTextArea inputCount;
     JButton addToReceiptButton;
     JButton payButton;
+    Kvitto kvitto;
+    Produkt kaffe;
 
 
     public CashRegister(){
@@ -94,22 +96,28 @@ public class CashRegister implements ActionListener {
         panel.setPreferredSize(new Dimension(600, 600));
 
         kaffeButton = new JButton("Kaffe");
+        kaffeButton.addActionListener(this);
         panel.add(kaffeButton);
 
         nalleButton = new JButton("Nalle");
+        nalleButton.addActionListener(this);
         panel.add(nalleButton);
 
         muggButton = new JButton("Mugg");
+        muggButton.addActionListener(this);
         panel.add(muggButton);
 
         chipsButton = new JButton("Chips");
+        chipsButton.addActionListener(this);
         panel.add(chipsButton);
 
         vaniljYoghurtButton = new JButton("Yoghurt");
+        vaniljYoghurtButton.addActionListener(this);
         panel.add(vaniljYoghurtButton);
         
 
         daimButton = new JButton("Daim");
+        daimButton.addActionListener(this);
         panel.add(daimButton);
 
 
@@ -137,14 +145,18 @@ public class CashRegister implements ActionListener {
     }
 
     public void run(){
+        kvitto = new Kvitto();
+        kaffe = new Produkt("Kaffe", 25.0, 12.0);
+        
         
 
     }            
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+        if (e.getSource() == kaffeButton) {
+            inputProductName.setText(kaffe.getName());
+        }
     }
 
     
