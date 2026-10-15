@@ -181,6 +181,14 @@ public class CashRegister implements ActionListener {
             inputProductName.setText(daim.getName());
         } else if (e.getSource() == addToReceiptButton) {
             String antalText = inputCount.getText();
+
+            try{
+                int antal = Integer.parseInt(antalText);
+                System.out.println(antal);
+
+            } catch (NumberFormatException error){
+                System.out.println("Skriv ett heltal");
+            }
             
         }
     }
