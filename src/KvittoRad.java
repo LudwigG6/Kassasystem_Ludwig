@@ -17,4 +17,5 @@ public class KvittoRad {
         return produkt.getPrice() * antal;
     }
     
+    
 }

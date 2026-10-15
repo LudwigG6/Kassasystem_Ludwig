@@ -230,6 +230,10 @@ public class CashRegister implements ActionListener {
             receipt.append("\n--------------------------------------------------\n");
             receipt.append("TACK FÖR DITT KÖP!          Sluttotal: " + kvitto.getTotalPris() + "\n");
             receipt.append("--------------------------------------------------\n");
+            kvitto = new Kvitto();
+            valdProdukt = null;
+            inputProductName.setText("");
+            inputCount.setText("");
         }
     }
 
