@@ -26,6 +26,7 @@ public class Kvitto {
         }
         return totalPris;
     }
+    
     public ArrayList<KvittoRad> getKvittoRader() {
         return kvittoRader;
     }

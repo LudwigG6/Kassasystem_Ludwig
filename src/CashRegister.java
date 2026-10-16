@@ -96,7 +96,7 @@ public class CashRegister implements ActionListener {
     private void createQuickButtonsArea() {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEADING, 5, 5));
         panel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        panel.setBackground(Color.green);
+        panel.setBackground(new Color(173, 216, 230));
         panel.setPreferredSize(new Dimension(600, 600));
 
         kaffeButton = new JButton("Kaffe");
@@ -174,7 +174,7 @@ public class CashRegister implements ActionListener {
         double totalBrutto = 0;
         double momsProcent = 0;
         for(KvittoRad rad : kvitto.getKvittoRader()){
-            receipt.append ( rad.getProdukt().getName() + " " + rad.getAntal() + " x " + rad.getTotalPris() + "\n");
+            receipt.append ( rad.getProdukt().getName() + " " + rad.getAntal() + " x " + rad.getProdukt().getPrice() + " = " + rad.getTotalPris() + "\n");
             totalMoms += rad.getMomsBelopp();
             totalNetto += rad.getNetto();
             totalBrutto += rad.getBrutto();
@@ -231,7 +231,6 @@ public class CashRegister implements ActionListener {
                 KvittoRad rad = new KvittoRad(valdProdukt, antal);
                 kvitto.laggTillRad(rad);
                 uppdateraKvitto();
-                kvitto.getTotalPris();
                 System.out.println(antal);
 
             } catch (NumberFormatException error){
